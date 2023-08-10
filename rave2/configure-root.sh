@@ -30,3 +30,5 @@ apt_install \
 # Clean up
 rm -rf /var/lib/apt/lists/*
 
+
+chmod 0755 /rave_scripts/launcher.R
