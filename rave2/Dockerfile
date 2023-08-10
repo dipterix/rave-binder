@@ -9,7 +9,7 @@ USER root
 
 COPY configure-root.sh /rave_scripts/configure-root.sh
 COPY launcher.R /rave_scripts/launcher.R
-RUN sudo /rave_scripts/configure-root.sh
+RUN sudo bash /rave_scripts/configure-root.sh
 
 USER ${NB_USER}
 
