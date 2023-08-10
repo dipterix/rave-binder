@@ -3,6 +3,7 @@ name: rave2-image-ci
 on:
   push:
     branches:
+      - 'master'
       - 'main'
 
 jobs:
