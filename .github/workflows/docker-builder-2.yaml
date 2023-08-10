@@ -26,6 +26,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: "./rave2"
+          context: "{{defaultContext}}:rave2"
           push: true
           tags: dipterix/rave2:latest
