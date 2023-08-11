@@ -12,6 +12,11 @@ tryCatch({
   remotes::install_github("dipterix/rpymat", upgrade = FALSE, force = TRUE, quiet = FALSE)
 })
 ravemanager::configure_python("3.9")
+# we don't use this so remove it
+try({
+  rpymat::run_command("conda remove -n r-reticulate --all --yes")
+})
+
 rpymat::add_packages(c("jupyter-rsession-proxy", "git+https://github.com/dipterix/jupyter-rave-proxy"), pip = TRUE)
 
 threeBrain::download_template_subject('cvs_avg35_inMNI152')
