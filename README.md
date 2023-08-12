@@ -1,12 +1,12 @@
-# Template for RStudio on Binder / JupyterHub
+# Template for RAVE on Binder / JupyterLab
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dipterix/rave-binder/HEAD)
 
-Generate a Git repository that can run R code with RStudio on
+Generate a Git repository that can run RAVE (with R & Python) on
 the browser via [mybinder.org](https://mybinder.org) or any JupyterHub
 from this template repository!
 
-Based on the [rocker/geospatial](https://hub.docker.com/r/rocker/geospatial)
+Based on the [dipterix/rave2](https://hub.docker.com/r/dipterix/rave2)
 image.
 
 ## How to use this repo
@@ -21,10 +21,11 @@ the instructions in this README from your newly created repository.
 ### 2. Install any packages you want
 
 You can create an `install.R` file that will be executed on build.
-Use `install.packages` or `devtools::install_version`.
+Use `install.packages` or `ravemanager:::install_packages`.
 
 ```R
-install.packages("ggplot2")
+# installs if package is missing, or skip
+ravemanager:::install_packages("ggplot2")
 ```
 
 Packages are installed from [packagemanager.rstudio.com](https://packagemanager.rstudio.com/client/#/),
@@ -35,9 +36,7 @@ out a list of apt package names in `apt.txt`.
 ### 3. Modify the Binder Badge in the README.md
 
 The 'Launch on Binder' badge in this README points to the template repository.
-You should modify it to point to your own repository. Keep the `urlpath=rstudio`
-parameter intact - that is what makes sure your repo will launch directly into
-RStudio
+You should modify it to point to your own repository. 
 
 ### 4. Add your R code and update README
 
@@ -46,23 +45,5 @@ too so it talks about your code, not these instructions on setting up this repo
 
 ## Troubleshooting
 
-**It didn't work! What do I do now?**.  If you are installing additional R
-*packages, this will sometimes fail when a package requires an external library
-*that is not found on the container.  We're working on a more elegant solution
-*for this case, but meanwhile, you'll need to modify the Dockerfile to install
-*these libraries.  For instance, the `gsl` [R package page
-*reads](https://packagemanager.rstudio.com/client/#/repos/1/packages/gsl)
+**It didn't work! What do I do now?**. File an issue in this repository!
 
-```shell
-# Install System Prerequisites for Ubuntu 20.04 (focal)
-apt-get install -y libgsl0-dev
-```
-
-To solve this, you will need to add the following line to your `apt.txt` file:
-
-```txt
-libgsl0-dev
-```
-
-Or, just get in touch by opening an issue. We'll try and resolve common cases so
-more things work out of the box.
