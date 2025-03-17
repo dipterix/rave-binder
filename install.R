@@ -47,3 +47,5 @@ install.packages(c("ravemanager", "dipsaus", "filearray", "ieegio", "ravedash", 
                    "ravetools", "readNSx", "rpyANTs", "rpymat", "shidashi", "threeBrain"), repos = "https://rave-ieeg.r-universe.dev")
 
 ravemanager:::finalize_installation(async = FALSE, upgrade = "config-only")
+
+IRkernel::installspec(user = FALSE, sys_prefix=TRUE)
